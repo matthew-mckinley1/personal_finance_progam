@@ -44,7 +44,11 @@ DEFINE FUNCTION convert_currency WITH PARAMETERS base_currency, base_value, curr
     IF base_currency IN currencies:
         base_currency_index equals base_currency's index in currencies
 
-    SET usd_conversion to quotient of base_value and the corresponding conversion_rate in conversion_rates
+    SET usd_conversion to quotient of base_value and the conversion rate to USD in conversion_rates
+
+    SET final_conversion to product of usd_conversion and corresponding conversion_rate in conversion_rates
+
+    RETURN final_conversion
     
 
         
