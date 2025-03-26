@@ -1,0 +1,50 @@
+Login:
+
+DEFINE FUNCTION login:
+
+    LOOP FOREVER:
+        IF there is login info in login csv file:
+            GET login_info from login csv
+
+            LOOP FOREVER:
+                GET username from user
+                GET password from user
+
+                IF username is equal to username in login_info AND password is equal to password in login_info:
+                    RETURN true
+                ELSE:
+                    CONTINUE LOOP
+        ELSE:
+            GET new_username from user
+            GET new_password from user
+
+            SET username and password in login csv to new_username and new_password
+            SET username and password in login_info to new_username and new_password
+
+
+Save and Load Finances:
+
+DEFINE FUNCTION save WITH PARAMETER finances:
+    
+    SET bank csv file to finances
+
+DEFINE FUNCTION load:
+
+    RETURN bank csv file
+
+
+Currency Conversion:
+
+SET currencies as list names of currencies
+SET conversion_rates as list of currency conversion rates to USD
+
+DEFINE FUNCTION convert_currency WITH PARAMETERS base_currency, base_value, currency_to_convert:
+
+    SET base_currency_index as integer 
+    IF base_currency IN currencies:
+        base_currency_index equals base_currency's index in currencies
+
+    SET usd_conversion to quotient of base_value and the corresponding conversion_rate in conversion_rates
+    
+
+        
