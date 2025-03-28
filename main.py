@@ -15,13 +15,13 @@ def main():
     choices = ['1: Track expenses and income.','2: Set budget limits and compare actual spending to limits.','3: Set a savings goal and track progress towards that goal.','4: View data visualizations of income and expenses.','5: Exit']
     choice = question(choices,'This program will help you to:')
     print(choice)
-    if choice == '1':
+    if choice == choices[0]:
         pass
-    elif choice == '2':
+    elif choice == choices[1]:
         pass
-    elif choice == '3':
+    elif choice == choices[2]:
         pass
-    elif choice == '4':
+    elif choice == choices[3]:
         pass
     else:
         print("Goodbye!")
