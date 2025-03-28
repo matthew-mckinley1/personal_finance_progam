@@ -1,3 +1,7 @@
+
+lowercase_letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+
 def read_file():
     with open('profile.txt', 'r') as profile_file:
         profile = profile_file.read().split(',')
@@ -7,6 +11,22 @@ def read_file():
 def write_profile(username, password):
     with open('profile.txt', 'w') as profile_file:
         profile_file.write(f'{username},{password}')
+
+def encrypt(password, key):
+
+    for character in password:
+        key += 1
+
+        # If the character is letter, either raise or lower it's case
+        if character.lower() in lowercase_letters:
+            if key % 2 == 0:
+                character = character.lower()
+            else:
+                character = character.upper()
+        # If the character is a number, either add or subtract 1 from it
+        elif character in numbers:
+            if key % 2 == 0:
+                character = str(int(character) + 1)
 
 def login():
 
