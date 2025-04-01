@@ -11,11 +11,17 @@ def question(answers,display):
             ).execute()
     return choice
 
-def number_input(message):
-    input = inquirer.text(
-        message=message,
-        validate = NumberValidator(message="Please type in a number.")).execute
-    return input
+def number_float_input(message):
+    message = message + ' (will get auto rounded to two decimals)'
+    while True:
+            number = str(inquirer.text(message=message).execute())
+            if number.isnumeric():
+                return int(number)
+            else:
+                try:
+                    return float(number)
+                except ValueError:
+                    print("Please type in a number (you can include decimals).")
 
 def str_input(message):
     input = inquirer.text(
