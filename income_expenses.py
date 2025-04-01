@@ -64,4 +64,21 @@ def show_income_expense_entry(income_entry_list, expense_entry_list):
     while True:
         user_input = question(['Income', 'Expense', 'Exit'], 'Choose if you want to see an entry for income or for expense or if you want to exit:')
         if user_input == 'Income':
+            entry_was_shown = False
             user_entry_date = get_income_entry_date()
+            series_value_list = []
+            for dataframe in income_entry_list:
+                dataframe_rows = dataframe.iterrows()
+                for idx, i in dataframe_rows:
+                    series_value_list.append(i.to_list())
+            for i_value in series_value_list:
+                if i_value[1] == user_entry_date:
+                    print('Your entry has been found displaying entry.')
+                    print(f'This is the income you got: {i_value[0]}')
+                    print(f'This was the date when you got the income: {i_value[1]}')
+                    print(f'This was the source of that income: {i_value[2]}')
+                    entry_was_shown = True
+            if entry_was_shown == False:
+                print('The entry could not be found please try again (date could have been put in wrong).')
+            else:
+                pass
