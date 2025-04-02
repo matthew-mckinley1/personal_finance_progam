@@ -11,11 +11,17 @@ def question(answers,display):
             ).execute()
     return choice
 
-def number_input(message):
-    input = inquirer.text(
-        message=message,
-        validate = NumberValidator(message="Please type in a number.")).execute
-    return input
+def number_float_input(message):
+    message = message + ' (will get auto rounded to two decimals):'
+    while True:
+            number = str(inquirer.text(message=message).execute())
+            if number.isnumeric():
+                return int(number)
+            else:
+                try:
+                    return round(float(number), 2)
+                except ValueError:
+                    print("Please type in a number (you can include decimals).")
 
 def str_input(message):
     input = inquirer.text(
@@ -25,10 +31,10 @@ def str_input(message):
 
 def income_entries(income_entry_list):
     def get_income():
-        income_amount = int(number_input('Please type the amount of money you gained:'))
+        income_amount = number_float_input('Please type the amount of money you gained')
         return income_amount
     def get_income_date():
-        income_date = str_input('Please type the date when you got the money(like MM/DD/YY for day if its single digit type 03):')
+        income_date = str_input('Please type the date when you got the money (like MM/DD/YY if any of these are single digits type 0(day (less than ten))):')
         return income_date
     def get_income_source():
         income_source = str_input('Please type where you got the money from:')
@@ -42,10 +48,10 @@ def income_entries(income_entry_list):
     
 def expense_entries(expense_entry_list):
     def get_expense():
-        income_amount = int(number_input('Please type the amount of money you spent:'))
+        income_amount = number_float_input('Please type the amount of money you spent')
         return income_amount
     def get_expense_date():
-        income_date = str_input('Please type the date when you spent the money(like MM/DD/YY for day if its single digit type 03):')
+        income_date = str_input('Please type the date when you spent the money (like MM/DD/YY if any of these are single digits type 0(day (less than ten))):')
         return income_date
     def get_expense_category():
         income_source = str_input('Please type what you spent the money on:')
@@ -59,7 +65,7 @@ def expense_entries(expense_entry_list):
 
 def show_income_expense_entry(income_entry_list, expense_entry_list):
     def get_entry_date():
-        income_entry_date = str_input('Please type the date when you either got the money or spent it(like MM/DD/YY for day if its single digit type 03):')
+        income_entry_date = str_input('Please type the date when you either got the money or spent it (like MM/DD/YY if any of these are single digits type 0(day (less than ten))):')
         return income_entry_date
     while True:
         user_input = question(['Income', 'Expense', 'Exit'], 'Choose if you want to see an entry for income or for expense or if you want to exit:')
