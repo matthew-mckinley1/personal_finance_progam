@@ -1,4 +1,5 @@
-
+# Darius Vaiaoga, Logging In
+# Nicholas Larsen, Encrypting Data
 from Crypto.Cipher import AES
 import base64
 
@@ -6,20 +7,28 @@ lowercase_letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
 numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
 def read_file():
+
     key = b'Imaginary Elephant Tonsil Spleen'
     nonce = b'12345678'
+
     with open('profile.txt', 'r') as profile_file:
         profile = profile_file.read().split(',')
+
     cipher = AES.new(key, AES.MODE_CTR, nonce=nonce)
     plain = cipher.decrypt(base64.b64decode(profile[1])).decode()
     profile[1] = plain
+    
     return profile
 
 def write_profile(username, password):
+
     key = b'Imaginary Elephant Tonsil Spleen'
     nonce = b'12345678'
+
     cipher = AES.new(key, AES.MODE_CTR, nonce=nonce)
     cipher_text = base64.b64encode(cipher.encrypt(password.encode())).decode()
+
+
     with open('profile.txt', 'w') as profile_file:
         profile_file.write(f'{username},{cipher_text}')
 
