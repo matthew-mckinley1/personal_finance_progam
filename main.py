@@ -3,6 +3,8 @@
 from InquirerPy import inquirer
 from login import *
 from income_expenses import *
+from graphs import *
+from currencies import *
 def question(answers,display):
     choice = inquirer.select(
             message=display,
