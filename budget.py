@@ -2,6 +2,37 @@
 from InquirerPy import inquirer
 
 
+# The selection menu for choosing whether to create / modify a budget
+def creation_selection_action(categories):
+    print('\033c')
+    action_create = inquirer.select(
+        message="What would you like to do?",
+        choices=[
+            "Create New Budget",
+            "Modify Old Budget",
+            "Exit Creation"
+        ],
+        filter=lambda result: result.split()[0].lower(),
+    ).execute()
+
+    if action_create == "create":
+        category = inquirer.text(
+            message="What NEW category would you like to add a budget to?",
+        ).execute()
+    elif action_create == "modify":
+        category = inquirer.fuzzy(
+            message="Choose a Category to Add a Budget to!",
+            # Choices category is first, then it formats it for better reading based on max length, then if there is a current budget print that, else print there isn't
+            choices=[f"{x+", ":<{len(max(budgets,key=len))+2}}{f"Currently ${budgets.get(x)}" if x in budgets else "No Current Budget"}" for x in categories],
+            filter=lambda result: result.split(",")[0],
+            transformer=lambda result: result.split(",")[0],
+        ).execute()
+    else:
+        return None
+    return category
+
+
+
 
 def budget(incomes,expenses,budgets):
     categories = list(dict.fromkeys(incomes["income_source"]+expenses["expense_category"]))
@@ -16,16 +47,20 @@ def budget(incomes,expenses,budgets):
         ],
         filter=lambda result: result.split()[0].lower(),
     ).execute()
-
+    
     if action == "create":
-
-        category = inquirer.fuzzy(
-            message="Choose a Category to Add a Budget to!",
-            choices=[f"{x+", ":<{len(max(budgets,key=len))+2}}{f"Current Budget: [{budgets.get(x)}]" if x in budgets else "No Current Budget"}" for x in categories],
-            filter=lambda result: result.split(",")[0]
+        category = creation_selection_action(categories)
+        print('\033c')
+        amount = inquirer.number(
+            message=f"What would you like to set your budget to?{f" (Currently: ${budgets[category]}" if category in budgets else ""})",
+            keybindings={"negative_toggle": []},
+            min_allowed=0,
+            transformer=lambda result:f"${int(result):,}",
+            filter=lambda result: int(result)
         ).execute()
 
-        print(category)
+        # Category = "House" or "Rent" for example, amount = 1000, hasn't saved both of those values to savable data or even budget variable yet
+
     elif action == "compare":
         pass
     else:
@@ -36,4 +71,4 @@ value2 = {"expense":[14,26],"expence_dates":[2018,2021],"expense_category":["Foo
 
 budgets = {"Food":100,"Car":200}
 
-budget(value1,value2,{x:budgets[x] for x in budgets})
+budget(value1,value2,budgets)
