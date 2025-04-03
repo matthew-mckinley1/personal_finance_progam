@@ -51,15 +51,18 @@ def budget(incomes,expenses,budgets):
     if action == "create":
         category = creation_selection_action(categories)
         print('\033c')
-        amount = inquirer.number(
-            message=f"What would you like to set your budget to?{f" (Currently: ${budgets[category]}" if category in budgets else ""})",
-            keybindings={"negative_toggle": []},
-            min_allowed=0,
-            transformer=lambda result:f"${int(result):,}",
-            filter=lambda result: int(result)
-        ).execute()
+        if category:
+            amount = inquirer.number(
+                message=f"What would you like to set your budget to?{f" (Currently: ${budgets[category]})" if category in budgets else ""}",
+                keybindings={"negative_toggle": []},
+                min_allowed=0,
+                transformer=lambda result:f"${int(result):,}",
+                filter=lambda result: int(result)
+            ).execute()
 
         # Category = "House" or "Rent" for example, amount = 1000, hasn't saved both of those values to savable data or even budget variable yet
+        else:
+            print("You exited the creation phase")
 
     elif action == "compare":
         pass
