@@ -5,6 +5,7 @@ from login import *
 from income_expenses import *
 from graphs import *
 from currencies import *
+from save_load import read_finances
 def question(answers,display):
     choice = inquirer.select(
             message=display,
@@ -22,9 +23,9 @@ def main():
     if choice == choices[0]:
         which = question(['Expenses','Income','View'],'Would you like to input income or expenses, or view previous entries?')
         if which == 'Expenses':
-            expense_entries()
+            expense_entries(read_finances()[1])
         else:
-            income_entries()
+            income_entries(read_finances()[0])
     elif choice == choices[1]:
         pass
     elif choice == choices[2]:
