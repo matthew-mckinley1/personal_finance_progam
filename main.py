@@ -6,6 +6,8 @@ from income_expenses import *
 from graphs import *
 from currencies import *
 from save_load import read_finances
+
+#Asks a question using InquirerPy
 def question(answers,display):
     choice = inquirer.select(
             message=display,
@@ -35,7 +37,7 @@ def main():
         elif choice == choices[2]:
             pass
         elif choice == choices[3]:
-            pass
+            graph_ui(read_finances()[0], read_finances()[1])
         else:
             print("Goodbye!")
             break
