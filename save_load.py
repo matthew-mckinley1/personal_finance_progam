@@ -1,7 +1,6 @@
 #Darius Vaiaoga, Saving and Loading finances
 import csv
 
-
 # Reads finance file
 def read_finances():
     income = []
@@ -14,8 +13,15 @@ def read_finances():
             if row != ['income','income_date','income_source',
                        'expense','expense_date','expense_source']:
 
-                income.append({'income': row[0], 'income_date': row[1], 'income_source': row[2]})
-                expenses.append({'expense': row[3], 'expense_date': row[4], 'expense_source': row[5]})
+                income_entry = {'income': row[0], 'income_date': row[1], 'income_source': row[2]}
+                # Check if the income_entry is empty, if not, add the income_entry to the income list
+                if income_entry != {'income': 0, 'income_date': 0, 'income_source': 0}: 
+                    income.append(income_entry)
+
+                expense_entry = {'expense': row[3], 'expense_date': row[4], 'expense_source': row[5]}
+                # Check if the expense_entry is empty, if not, add the expense_entry to the expense list
+                if expense_entry != {'expense': 0, 'expense_date': 0, 'expense_source': 0}:
+                    expenses.append(expense_entry)
 
     return [income, expenses]
 

@@ -49,10 +49,8 @@ def income_entries(income_entry_list):
     user_income_source = get_income_source()
     #The income entry itself
     income_entry_dict = {'income': user_income, 'income_date': user_income_date, 'income_source': user_income_source}
-    income_entry = pandas.DataFrame(income_entry_dict)
-
-    income_entry_list.append(income_entry)
-
+    save_load(True, income_entry_dict)
+    
 #The function that gets the expense entry from the user
 def expense_entries(expense_entry_list):
     #Inner functions for user inputs
@@ -70,11 +68,8 @@ def expense_entries(expense_entry_list):
     user_expense_category = get_expense_category()
     #The expense entry itself
     expense_entry_dict = {'expense': user_expense, 'expense_date': user_expense_date, 'expense_category': user_expense_category}
-    expense_entry = pandas.DataFrame(expense_entry_dict)
-
-
-
-    expense_entry_list.append(expense_entry)
+    
+    save_load(False, expense_entry_dict)
 
 #A function to find and show a specific entry based on date
 def show_income_expense_entry(income_entry_list, expense_entry_list):
