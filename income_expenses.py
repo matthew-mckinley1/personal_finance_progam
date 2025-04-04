@@ -29,7 +29,7 @@ def number_float_input(message):
 #A function that is a simple user input template
 def str_input(message):
     input = inquirer.text(
-        message=message).execute
+        message=message).execute()
     return input
 
 #The function that gets the income entry from the user
@@ -49,7 +49,7 @@ def income_entries(income_entry_list):
     user_income_source = get_income_source()
     #The income entry itself
     income_entry_dict = {'income': user_income, 'income_date': user_income_date, 'income_source': user_income_source}
-    save_load(True, income_entry_dict)
+    save_load.save_finances(True, income_entry_dict)
     
 #The function that gets the expense entry from the user
 def expense_entries(expense_entry_list):
@@ -69,7 +69,7 @@ def expense_entries(expense_entry_list):
     #The expense entry itself
     expense_entry_dict = {'expense': user_expense, 'expense_date': user_expense_date, 'expense_category': user_expense_category}
     
-    save_load(False, expense_entry_dict)
+    save_load.save_finances(False, expense_entry_dict)
 
 #A function to find and show a specific entry based on date
 def show_income_expense_entry(income_entry_list, expense_entry_list):
@@ -81,7 +81,7 @@ def show_income_expense_entry(income_entry_list, expense_entry_list):
         user_input = question(['Income', 'Expense', 'Exit'], 'Choose if you want to see an entry for income or for expense or if you want to exit:')
         if user_input == 'Income':
             while True:
-                user_input = question[['Give a date to use', 'Exit'], 'Choose an option:']
+                user_input = question(['Give a date to use', 'Exit'], 'Choose an option:')
                 if user_input == 'Give a date to use':
                     user_entry_date = get_entry_date()
                     #Finding the income entry and if found showing the income entry
@@ -89,7 +89,7 @@ def show_income_expense_entry(income_entry_list, expense_entry_list):
                         if income_entry['income_date'] == user_entry_date:
                             print("The entry has been found showing entry.")
                             print(f'This is the income amount: {income_entry['income']}')
-                            print(f'This is the income date: {income_entry['expense_date']}')
+                            print(f'This is the income date: {income_entry['income_date']}')
                             print(f'This is the source of the income: {income_entry['income_source']}')
                             break
                     else:
@@ -99,7 +99,7 @@ def show_income_expense_entry(income_entry_list, expense_entry_list):
                     break
         elif user_input == 'Expense':
             while True:
-                user_input = question[['Give a date to use', 'Exit'], 'Choose an option:']
+                user_input = question(['Give a date to use', 'Exit'], 'Choose an option:')
                 if user_input == 'Give a date to use':
                     user_entry_date = get_entry_date()
                     #Finding the expense entry and if found showing the expense entry

@@ -18,9 +18,9 @@ def read_finances():
                 if income_entry != {'income': 0, 'income_date': 0, 'income_source': 0}: 
                     income.append(income_entry)
 
-                expense_entry = {'expense': row[3], 'expense_date': row[4], 'expense_source': row[5]}
+                expense_entry = {'expense': row[3], 'expense_date': row[4], 'expense_category': row[5]}
                 # Check if the expense_entry is empty, if not, add the expense_entry to the expense list
-                if expense_entry != {'expense': 0, 'expense_date': 0, 'expense_source': 0}:
+                if expense_entry != {'expense': 0, 'expense_date': 0, 'expense_category': 0}:
                     expenses.append(expense_entry)
 
     return [income, expenses]
@@ -33,6 +33,6 @@ def save_finances(saving_income, data):
         if saving_income:
             finance_writer.writerow([data['income'],data['income_date'],data['income_source'],0,0,0])
         else:
-            finance_writer.writerow([0,0,0,data['expense'],data['expense_date'],data['expense_source']])
+            finance_writer.writerow([0,0,0,data['expense'],data['expense_date'],data['expense_category']])
             
     

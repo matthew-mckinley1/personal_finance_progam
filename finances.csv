@@ -1,1 +1,4 @@
-income,income_date,income_source,expense,expense_date,expense_source
+income,income_date,income_source,expense,expense_date,expense_category
+100,asdaf,Birthday,0,0,0
+20,01/23/24,Gift,0,0,0
+0,0,0,20,01/03/24,Game
