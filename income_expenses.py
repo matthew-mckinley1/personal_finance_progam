@@ -2,6 +2,7 @@
 from InquirerPy import inquirer
 from InquirerPy.validator import NumberValidator
 import pandas
+from dateutil import parser
 
 def question(answers,display):
     choice = inquirer.select(
@@ -28,7 +29,11 @@ def income_entries(income_entry_list):
         income_amount = int(number_input('Please type the amount of money you gained:'))
         return income_amount
     def get_income_date():
-        income_date = str_input('Please type the date when you got the money(like MM/DD/YY for day if its single digit type 03):')
+        income_date = str_input('Please type the date when you got the money (like MM/DD/YY if any of these are single digits type 0, i.e. 10-04-09:')
+        try:
+            income_date = parser.parse(income_date)
+        except:
+            print("Please enter in MM-DD-YY format.")
         return income_date
     def get_income_source():
         income_source = str_input('Please type where you got the money from:')
@@ -45,7 +50,11 @@ def expense_entries(expense_entry_list):
         income_amount = int(number_input('Please type the amount of money you spent:'))
         return income_amount
     def get_expense_date():
-        income_date = str_input('Please type the date when you spent the money(like MM/DD/YY for day if its single digit type 03):')
+        income_date = str_input('Please type the date when you got the money (like MM/DD/YY if any of these are single digits type 0, i.e. 10-04-09:')
+        try:
+            income_date = parser.parse(income_date)
+        except:
+            print("Please enter in MM-DD-YY format.")
         return income_date
     def get_expense_category():
         income_source = str_input('Please type what you spent the money on:')
