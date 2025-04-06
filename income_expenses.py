@@ -33,7 +33,7 @@ def str_input(message):
     return input
 
 #The function that gets the income entry from the user
-def income_entries(income_entry_list):
+def income_entries():
     #Inner functions for user inputs
     def get_income():
         income_amount = number_float_input('Please type the amount of money you gained')
@@ -52,7 +52,7 @@ def income_entries(income_entry_list):
     save_load(True, income_entry_dict)
     
 #The function that gets the expense entry from the user
-def expense_entries(expense_entry_list):
+def expense_entries():
     #Inner functions for user inputs
     def get_expense():
         income_amount = number_float_input('Please type the amount of money you spent')
