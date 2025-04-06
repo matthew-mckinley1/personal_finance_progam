@@ -1,5 +1,6 @@
 # Gabriel Crozier Budget Calculator
 from InquirerPy import inquirer
+import matplotlib.pyplot as plt
 
 
 # The selection menu for choosing whether to create / modify a budget
@@ -71,7 +72,7 @@ def budget(incomes,expenses,budgets):
                     break
 
         elif action == "compare":
-            pass
+            pass # Comapre Later
         else:
             print("\033cThank you for using my program!")
             return budgets
