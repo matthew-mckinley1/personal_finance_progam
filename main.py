@@ -6,6 +6,7 @@ from income_expenses import *
 from graphs import *
 from currencies import *
 from save_load import read_finances
+from budget import budget
 
 #Asks a question using InquirerPy
 def question(answers,display):
