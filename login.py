@@ -50,8 +50,6 @@ def encrypt(password, key):
 
 def login():
 
-    os.environ['PYTHONHASHSEED']='0'
-
     while True:
         # ['_', '_'] is the default
 

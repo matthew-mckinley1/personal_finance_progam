@@ -45,7 +45,7 @@ def income_entries(income_entry_list):
     user_income_source = get_income_source()
     income_entry_dict = {'income': user_income, 'income_date': user_income_date, 'income_source': user_income_source}
     
-    save_load(True, income_entry_dict)
+    save_load.save_finances(True, income_entry_dict)
     
 def expense_entries(expense_entry_list):
     def get_expense():
@@ -62,7 +62,7 @@ def expense_entries(expense_entry_list):
     user_expense_category = get_expense_category()
     expense_entry_dict = {'expense': user_expense, 'expense_date': user_expense_date, 'expense_category': user_expense_category}
     
-    save_load(False, expense_entry_dict)
+    save_load.save_finances(False, expense_entry_dict)
 
 def show_income_expense_entry(income_entry_list, expense_entry_list):
     def get_entry_date():
@@ -72,7 +72,7 @@ def show_income_expense_entry(income_entry_list, expense_entry_list):
         user_input = question(['Income', 'Expense', 'Exit'], 'Choose if you want to see an entry for income or for expense or if you want to exit:')
         if user_input == 'Income':
             while True:
-                user_input = question[['Give a date to use', 'Exit'], 'Choose an option:']
+                user_input = question(['Give a date to use', 'Exit'], 'Choose an option:')
                 if user_input == 'Give a date to use':
                     user_entry_date = get_entry_date()
                     for income_entry in income_entry_list:
@@ -87,7 +87,7 @@ def show_income_expense_entry(income_entry_list, expense_entry_list):
                     break
         elif user_input == 'Expense':
             while True:
-                user_input = question[['Give a date to use', 'Exit'], 'Choose an option:']
+                user_input = question(['Give a date to use', 'Exit'], 'Choose an option:')
                 if user_input == 'Give a date to use':
                     user_entry_date = get_entry_date()
                     for expense_entry in expense_entry_list:

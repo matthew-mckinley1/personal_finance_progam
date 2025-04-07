@@ -24,8 +24,10 @@ def main():
         which = question(['Expenses','Income','View'],'Would you like to input income or expenses, or view previous entries?')
         if which == 'Expenses':
             expense_entries(read_finances()[1])
-        else:
+        elif which == 'Income':
             income_entries(read_finances()[0])
+        else:
+            show_income_expense_entry(read_finances()[0], read_finances()[1])
     elif choice == choices[1]:
         pass
     elif choice == choices[2]:

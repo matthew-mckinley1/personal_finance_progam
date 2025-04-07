@@ -1,1 +1,1 @@
-income,income_date,income_source,expense,expense_date,expense_source
+income,income_date,income_source,expense,expense_date,expense_source0,0,0,10,<bound method BaseSimplePrompt.execute of <InquirerPy.prompts.input.InputPrompt object at 0x00000140C6177260>>,<bound method BaseSimplePrompt.execute of <InquirerPy.prompts.input.InputPrompt object at 0x00000140C621F650>>
