@@ -2,13 +2,11 @@
 
 ## Project Description
 ---
-How to 
+This is a personal finance program. It is used to store financial information, budgets, and savings goals protected by encryption.
 
 ## Installation
 ---
-1. Step one 
-2. Step two
-3. Step three  
+Does not need to be done.
 
 ## Excecution and Usage
 ---
@@ -37,13 +35,13 @@ How to
 
 ## Contributing
 ---
-
+* Aria AI was used as an assistant for Gabe to program the budget graphs.
 ## Contributers
 ---
 * Darius Vaiaoga wrote the code for the login system and CSV saving and loading
-* Nick Larsen, wrote the code for the UI and encryption
-* Max Holdaway, wrote the code for the income and expenses file
-* person who helped, what they did  
+* Nicholas Larsen wrote the code for the UI and encryption
+* Gabriel Crozier wrote the code for budgets and savings goals
+* Max Holdaway wrote the code for the income and expenses file
 
 ## Author's Info
 --- 
