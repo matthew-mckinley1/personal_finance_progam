@@ -16,11 +16,13 @@ def question(answers,display):
             ).execute()
     return choice
 
+#Allows the user to select options of what to do in the program.
 def main():
     print("Hello! Welcome to your personal finance program!")
     login()
 
     while True:
+        #Creates a list of choices, and uses them to ask a question with inquirerPy
         choices = ['1: Track expenses and income.','2: Set budget limits and compare actual spending to limits.','3: Set a savings goal and track progress towards that goal.','4: View data visualizations of income and expenses.','5: Exit']
         choice = question(choices,'This program will help you to:')
         print(choice)
@@ -33,7 +35,7 @@ def main():
             else:
                 show_income_expense_entry(read_finances()[0], read_finances()[1])
         elif choice == choices[1]:
-            pass
+            
         elif choice == choices[2]:
             pass
         elif choice == choices[3]:
