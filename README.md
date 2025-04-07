@@ -20,20 +20,20 @@ How to
 
 ## Used Technologies
 ---
-+ InquirerPy, used to handle user inputs in the project
+- InquirerPy, used to handle user inputs in the project
 `pip install InquirerPy`
-+ MatPlotLib, used to display graphs in the project
+- MatPlotLib, used to display graphs in the project
 `pip install matplotlib`
-+ Pandas, used to handle csv files in the project
+- Pandas, used to handle csv files in the project
 `pip install pandas`  
 
 ## Current Features
 ---
-- Financial Information protected by encryption
-- Budget tracking with graphs
-- Income and expense tracking
-- Data visualizations of income and expenses
-- Savings goal tracking  
++ Financial Information protected by encryption
++ Budget tracking with graphs
++ Income and expense tracking
++ Data visualizations of income and expenses
++ Savings goal tracking
 
 ## Contributing
 ---
