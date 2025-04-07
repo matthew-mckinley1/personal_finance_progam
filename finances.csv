@@ -1,1 +1,5 @@
-income,income_date,income_source,expense,expense_date,expense_source0,0,0,10,<bound method BaseSimplePrompt.execute of <InquirerPy.prompts.input.InputPrompt object at 0x00000140C6177260>>,<bound method BaseSimplePrompt.execute of <InquirerPy.prompts.input.InputPrompt object at 0x00000140C621F650>>
+income,income_date,income_source,expense,expense_date,expense_category
+0,0,0,20.3,2024-02-29 00:00:00,French Fries
+0,0,0,30.2,2010-09-05 00:00:00,Peanuts
+7,2025-03-18 00:00:00,Editing,0,0,0
+-23.0,2025-02-24 00:00:00,Not Editing,0,0,0

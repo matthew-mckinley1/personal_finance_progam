@@ -2,7 +2,7 @@
 
 ## Project Description
 ---
-
+How to 
 
 ## Installation
 ---
@@ -29,18 +29,19 @@
 
 ## Current Features
 ---
-- thing the program does
-- thing the program does
-- thing the program does
-- thing the program does  
+- Financial Information protected by encryption.
+- Budget tracking with graphs
+- Income and expense tracking
+- Data visualizations of income and expenses
+- Savings goal tracking  
 
 ## Contributing
 ---
 
 ## Contributers
 ---
-* Darius Vaiaoga wrote the code for the login system, encryption, currency conversion, and CSV saving and loading
-* Nick Larsen, wrote the code for the UI
+* Darius Vaiaoga wrote the code for the login system and CSV saving and loading
+* Nick Larsen, wrote the code for the UI and encryption
 * person who helped, what they did  
 * person who helped, what they did  
 

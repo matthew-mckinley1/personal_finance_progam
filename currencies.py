@@ -85,7 +85,3 @@ def currency_conversion_menu():
                     break
 
         return convert_currency(base_currency, base_value, currency_to_convert)
-
-# print(currency_conversion_menu())
-
-
