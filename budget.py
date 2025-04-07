@@ -126,7 +126,7 @@ def budget(incomes,expenses):
                 invalid_message="Not Correct Format"
             ).execute()
             data = data_converter(expenses, month, categories, budgets)
-
+            print(data)
             budget_graph(data) # I REALLY WISH I COULD DO MULTIPLE MONTHS BUT THIS WAS ALREADY A NIGHTMARE!!!! # Graphs budgets on month
 
 
@@ -135,5 +135,5 @@ def budget(incomes,expenses):
             wb("budgets.csv",budgets)
             return
 
-
+#[{"income":14,"income_date":"03-02-25 00:00:00","income_source":"Food"},{"income":14,"income_date":"04-02-25 00:00:00","income_source":"Food"},{"income":26,"income_date":"04-02-25 00:00:00","income_source":"Car"},{"income":36,"income_date":"04-07-25 00:00:00","income_source":"Car"},{"income":42,"income_date":"04-01-25 00:00:00","income_source":"House"}]
 # TEST VALUE I WILL DELETE LATER value1 = [{"expense":14,"expense_date":"03-02-25 00:00:00","expense_category":"Food"},{"expense":14,"expense_date":"04-02-25 00:00:00","expense_category":"Food"},{"expense":26,"expense_date":"04-02-25 00:00:00","expense_category":"Car"},{"expense":36,"expense_date":"04-07-25 00:00:00","expense_category":"Car"},{"expense":42,"expense_date":"04-01-25 00:00:00","expense_category":"House"}]
