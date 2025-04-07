@@ -53,7 +53,8 @@ You can contact me at my school email: darius.vaiaoga@ucas-edu.net
 * "Insert name here" Info:  
 
 * Max Holdaway Info:  
-I am a simple Computer Programming 2 Student (CS1500). I am still learning how to code but I am improving. I hope to improve even more and eventually use this in engineering.
+I am a simple Computer Programming 2 Student (CS1500). I am still learning how to code but I am improving. I hope to improve even more and eventually use this in engineering.  
+My School email is: max.holdaway@ucas-edu.net
 
 ## Change Log
 ---
