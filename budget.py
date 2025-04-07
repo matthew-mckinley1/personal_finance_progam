@@ -75,11 +75,3 @@ def budget(incomes,expenses,budgets):
         else:
             print("\033cThank you for using my program!")
             return budgets
-
-value1 = {"income":[154,24],"income_dates":[2019,2020],"income_source":["Gas","Food"]}
-value2 = {"expense":[14,26],"expence_dates":[2018,2021],"expense_category":["Food","Car"]}
-
-budgets = {"Food":100,"Car":200}
-
-budget(value1,value2,budgets)
-print(budgets)
