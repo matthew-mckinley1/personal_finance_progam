@@ -13,7 +13,7 @@ def question(answers,display):
 def main():
     print("Hello! Welcome to your personal finance program!")
     choices = ['1: Track expenses and income.','2: Set budget limits and compare actual spending to limits.','3: Set a savings goal and track progress towards that goal.','4: View data visualizations of income and expenses.','5: Exit']
-    choice = question(choices,'This program will help you to:')
+    choice = question(choices,'This program will help you:')
     print(choice)
     if choice == '1':
         pass
@@ -24,6 +24,7 @@ def main():
     elif choice == '4':
         pass
     else:
-        print("Goodbye!")
+        print("Goodbye")
         exit()
 
+main()
