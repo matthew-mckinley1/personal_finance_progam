@@ -20,12 +20,18 @@ def number_float_input(message):
     while True:
             number = str(inquirer.text(message=message).execute())
             if number.isnumeric():
-                return int(number)
+                if number >= 0:
+                    return int(number)
+                else:
+                    print("Number cannot be less than zero.")
             else:
                 try:
-                    return round(float(number), 2)
-                except ValueError:
-                    print("Please type in a number (you can include decimals).")
+                    if number >= 0:
+                        return round(float(number), 2)
+                    else:
+                        print("Number cannot be less than zero.")
+                except:
+                    print("Please type in a number (you can include decimals) (also don't type a number less than zero).")
 
 #A function that is a simple user input template
 def str_input(message):
