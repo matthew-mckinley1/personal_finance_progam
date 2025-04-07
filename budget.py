@@ -126,7 +126,7 @@ def budget(incomes,expenses):
                 invalid_message="Not Correct Format"
             ).execute()
             data = data_converter(expenses, month, categories, budgets)
-
+            print(data)
             budget_graph(data) # I REALLY WISH I COULD DO MULTIPLE MONTHS BUT THIS WAS ALREADY A NIGHTMARE!!!! # Graphs budgets on month
 
 
