@@ -29,7 +29,7 @@ How to
 
 ## Current Features
 ---
-- Financial Information protected by encryption.
+- Financial Information protected by encryption
 - Budget tracking with graphs
 - Income and expense tracking
 - Data visualizations of income and expenses
