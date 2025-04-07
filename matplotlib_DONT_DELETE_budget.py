@@ -13,10 +13,13 @@ def darken_cmap(cmap, factor=0.5):
 data = {
     'Month': ['Jan', 'Feb', 'Mar', 'Apr'] * 4,
     'Category': ['Food'] * 4 + ['Car'] * 4 + ['House'] * 4 + ['Shop'] * 4,
-    'Value': [2, 3, 4, 1, 1, 2, 1, 3, 4, 2, 1, 2, 1, 2, 1, 3],
+    'Value': [2, 0, 4, 1, 1, 2, 1, 3, 4, 2, 1, 2, 1, 2, 1, 3],
     'Budget': [3] * 4 + [2.5] * 4 + [1.8] * 4 + [2.2] * 4,
 }
 df = pd.DataFrame(data)
+
+# Calculate the difference between Value and Budget
+df['Difference'] = df['Value'] - df['Budget']  # Vectorized calculation
 
 # Plotting parameters
 categories = df['Category'].unique()
@@ -42,11 +45,12 @@ for i, category in enumerate(categories):
 
     # Draw budget lines and fill bars
     for j, month_data in category_data.iterrows():
-        if month_data['Value'] < month_data['Budget']:
-            ax.bar(bar_positions[category_data.index.get_loc(j)], month_data['Budget'] - month_data['Value'], bar_width, bottom=month_data['Value'], color='#E2E2E2')
-        elif month_data['Value'] > month_data['Budget']:
-            ax.bar(bar_positions[category_data.index.get_loc(j)], month_data['Value'] - month_data['Budget'], bar_width, bottom=month_data['Budget'], color=very_darkened_cmap(i))
-        ax.hlines(month_data['Budget'], xmin=bar_positions[category_data.index.get_loc(j)] - bar_width / 2 - 0.01, xmax=bar_positions[category_data.index.get_loc(j)] + bar_width / 2 + 0.01, color='black', linewidth=3)
+        # Use the 'Difference' column for efficiency
+        if month_data['Difference'] < 0:
+            ax.bar(bar_positions[category_data.index.get_loc(j)], abs(month_data['Difference']), bar_width, bottom=month_data['Value'], color='#E2E2E2')
+        elif month_data['Difference'] > 0:
+            ax.bar(bar_positions[category_data.index.get_loc(j)], month_data['Difference'], bar_width, bottom=month_data['Budget'], color=very_darkened_cmap(i))
+        ax.hlines(month_data['Budget'], xmin=bar_positions[category_data.index.get_loc(j)] - bar_width / 2 - 0.01, xmax=bar_positions[category_data.index.get_loc(j)] + bar_width / 2 + 0.01, color='black', linewidth=3.5)
 
 ax.set_xticks(x)
 ax.set_xticklabels(months)
