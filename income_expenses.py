@@ -31,7 +31,7 @@ def number_float_input(message):
                     else:
                         print("Number cannot be less than zero.")
                 except:
-                    print("Please type in a number (you can include decimals) (also don't type a number less than zero).")
+                    print("Please type in a number that is not less than zero (you can include decimals).")
 
 #A function that is a simple user input template
 def str_input(message):
