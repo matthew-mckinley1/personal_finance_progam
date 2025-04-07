@@ -23,7 +23,9 @@ Does not need to be done.
 - MatPlotLib, used to display graphs in the project
 `pip install matplotlib`
 - Pandas, used to handle csv files in the project
-`pip install pandas`  
+`pip install pandas` 
+- Crypto, used to encrypt user's password
+`pip install pycryptodome`  
 
 ## Current Features
 ---
