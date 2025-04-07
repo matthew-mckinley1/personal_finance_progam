@@ -30,7 +30,23 @@ def write_profile(username, password):
 
 
     with open('profile.txt', 'w') as profile_file:
-        profile_file.write(f'{username},{cipher_text}')
+        profile_file.write(f'{username},{password}')
+
+def encrypt(password, key):
+
+    for character in password:
+        key += 1
+
+        # If the character is letter, either raise or lower it's case
+        if character.lower() in lowercase_letters:
+            if key % 2 == 0:
+                character = character.lower()
+            else:
+                character = character.upper()
+        # If the character is a number, either add or subtract 1 from it
+        elif character in numbers:
+            if key % 2 == 0:
+                character = str(int(character) + 1)
 
 def login():
 
@@ -44,8 +60,11 @@ def login():
 
             while True:
 
-                username_attempt = input('Username: ')
-                password_attempt = input('Password: ')
+                username_attempt = str(input('Username: '))
+                password_attempt = str(input('Password: '))
+
+                print(username_attempt)
+                print(password_attempt)
 
                 if [username_attempt, password_attempt] == profile:
                     print(f'Welcome {username_attempt}.')
