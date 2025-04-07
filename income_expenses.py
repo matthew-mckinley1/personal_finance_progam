@@ -1,7 +1,6 @@
 #Max Holdaway Income / Expenses Entry and Viewing functions
 from InquirerPy import inquirer
 from InquirerPy.validator import NumberValidator
-import pandas
 from dateutil import parser
 import save_load
 
