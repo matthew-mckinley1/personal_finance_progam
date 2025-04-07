@@ -1,25 +1,36 @@
 # Gabriel Crozier Budget Calculator
 from InquirerPy import inquirer
-import matplotlib.pyplot as plt
+from graph_budget import budget_graph
+from write_budgets import write_budget as wb
+from read_budgets import read_budget as rb
+
 
 months_abr = ("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
 
-# This converts the budget data into something usable for my comparer
-def data_converter(expenses, month, categories, budgets):
-    # We need months, categories, values, and budgets
-    # Each needs to be a list with the same len
-    months = [months_abr[(months_abr.index(month) - 2) % 12], months_abr[(months_abr.index(month) - 1) % 12], month] #* 3 # Gets pre month.
-    categories = sum([[cat] for cat in categories],[])
-    values = [] # need to go through all expenses values and add them up per category per month
-    budgets_data = sum([[budgets[key]] for key in budgets],[]) # need to just go through each budget and add it based on categories
+# This converts the budget data into something usable for my comparer graph (Why was this so awful ):)
+def data_converter(expenses_unform, month_year, categories, budgets):
+    month, year = month_year.split("-")
+    expenses = []
+
+    # Goes through each expense and selects based on the correct month
+    for expense in expenses_unform:
+        if expense["expense_date"].split(" ")[0].split("-")[2][0:2] == year:
+            if expense["expense_date"].split(" ")[0].split("-")[0] == month:
+                expenses.append(expense)
+
+    month_label = [months_abr[int(month)]] * len(categories) # Ex: May, May, May, May -- Alows for easy dataframe
+    categories = sum([[cat] for cat in categories],[]) # Used to work for multiple months, for now it's just over engineered
+    values = [sum([ex["expense"] for ex in expenses if ex["expense_category"] == cat]) for cat in categories] # Goes through each category and adds the sum of all expenses for that category into a list
+    budgets_data = sum([[budgets[key]] for key in budgets],[]) # Used to work for multiple months, now it just over engeneered
     
-    print(months)
-    print(categories)
-    print(values)
-    print(budgets_data) # RIGHT NOW ONLY PRINT 6 ITEMS BECAUSE NNEDS TO ADD THE None FEATURE TO BDUDGETS!!
-    
-    input("gh")
-    pass
+    data = {
+        'Month': month_label,
+        'Category': categories,
+        'Value': values,
+        'Budget': budgets_data,
+    }
+    return data
+
 
 
 # The selection menu for choosing whether to create / modify a budget. Makes main budget function less big and confusing
@@ -58,15 +69,18 @@ def creation_selection_action(categories, budgets):
             choices=[x for x in categories],
         ).execute()
         return [category]
+    
     else:
         return None
     return category
 
 
 # Main budget function. Contains most ui and sets new budgets.
-def budget(incomes,expenses,budgets):
+def budget(incomes,expenses):
+    budgets = rb("budgets.csv")
     while True:
-        categories = list(dict.fromkeys(incomes["income_source"] + expenses["expense_category"] + [key for key in budgets]))
+        categories = list(dict.fromkeys([x["income_source"] for x in incomes] + [x["expense_category"] for x in expenses] + [key for key in budgets]))
+        categories.sort()
         budgets = {x:budgets.get(x) for x in categories}
 
         print("\033c")
@@ -80,7 +94,7 @@ def budget(incomes,expenses,budgets):
             filter=lambda result: result.split()[0].lower(),
         ).execute()
         
-        if action == "create":
+        if action == "create": # Everything to do with messing with budgets
             while True:
                 category = creation_selection_action(categories, budgets)
                 print('\033c')
@@ -105,20 +119,21 @@ def budget(incomes,expenses,budgets):
                 else:
                     break
 
-        elif action == "compare":
-            month = inquirer.select(
-                message="Month?",
-                choices=months_abr
+        elif action == "compare": # Just the graph
+            month = inquirer.text(
+                message="Choose a month MM-YY",
+                validate=lambda result: all([len(result) == 5, result[2] == "-", "".join(result.split("-")).isdigit()]),
+                invalid_message="Not Correct Format"
             ).execute()
-            data_converter(expenses, month, categories, budgets)
+            data = data_converter(expenses, month, categories, budgets)
+
+            budget_graph(data) # I REALLY WISH I COULD DO MULTIPLE MONTHS BUT THIS WAS ALREADY A NIGHTMARE!!!! # Graphs budgets on month
+
+
         else:
             print("\033cThank you for using my program!")
-            return budgets
+            wb("budgets.csv",budgets)
+            return
 
-value1 = {"income":[154,24],"income_dates":["3/25/25","4/6/25"],"income_source":["Gas","Food"]}
-value2 = {"expense":[14,26],"expence_dates":["3/2/28","4/2/25"],"expense_category":["Food","Car"]}
 
-budgets = {"Food":100,"Car":200}
-
-budget(value1,value2,budgets)
-print(budgets)
+# TEST VALUE I WILL DELETE LATER value1 = [{"expense":14,"expense_date":"03-02-25 00:00:00","expense_category":"Food"},{"expense":14,"expense_date":"04-02-25 00:00:00","expense_category":"Food"},{"expense":26,"expense_date":"04-02-25 00:00:00","expense_category":"Car"},{"expense":36,"expense_date":"04-07-25 00:00:00","expense_category":"Car"},{"expense":42,"expense_date":"04-01-25 00:00:00","expense_category":"House"}]
