@@ -19,12 +19,14 @@ def number_float_input(message):
     while True:
             number = str(inquirer.text(message=message).execute())
             if number.isnumeric():
+                number = int(number)
                 if number >= 0:
-                    return int(number)
+                    return number
                 else:
                     print("Number cannot be less than zero.")
             else:
                 try:
+                    number = float(number)
                     if number >= 0:
                         return round(float(number), 2)
                     else:
