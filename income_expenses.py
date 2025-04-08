@@ -1,7 +1,6 @@
 #Max Holdaway Income / Expenses Entry and Viewing functions
 from InquirerPy import inquirer
 from InquirerPy.validator import NumberValidator
-import pandas
 from dateutil import parser
 import save_load
 
@@ -20,12 +19,20 @@ def number_float_input(message):
     while True:
             number = str(inquirer.text(message=message).execute())
             if number.isnumeric():
-                return int(number)
+                number = int(number)
+                if number >= 0:
+                    return number
+                else:
+                    print("Number cannot be less than zero.")
             else:
                 try:
-                    return round(float(number), 2)
-                except ValueError:
-                    print("Please type in a number (you can include decimals).")
+                    number = float(number)
+                    if number >= 0:
+                        return round(float(number), 2)
+                    else:
+                        print("Number cannot be less than zero.")
+                except:
+                    print("Please type in a number that is not less than zero (you can include decimals).")
 
 #A function that is a simple user input template
 def str_input(message):
