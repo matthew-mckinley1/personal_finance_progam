@@ -18,8 +18,6 @@ def data_converter(expenses_unform, month_year, categories, budgets):
             if expense["expense_date"].split(" ")[0].split("-")[1] == month:
                 expenses.append(expense)
 
-    print(expenses)
-
     month_label = [months_abr[int(month)]] * len(categories) # Ex: May, May, May, May -- Alows for easy dataframe
     categories = sum([[cat] for cat in categories],[]) # Used to work for multiple months, for now it's just over engineered
     values = [sum([float(ex["expense"]) for ex in expenses if ex["expense_category"] == cat]) for cat in categories] # Goes through each category and adds the sum of all expenses for that category into a list
@@ -81,9 +79,10 @@ def creation_selection_action(categories, budgets):
 
 # Main budget function. Contains most ui and sets new budgets.
 def budget(incomes,expenses):
-    budgets = rb("budgets.csv")
+    budgets = rb("budgets.csv") # Gets budgets from budgets.csv
+
     while True:
-        categories = list(dict.fromkeys([x["income_source"] for x in incomes] + [x["expense_category"] for x in expenses] + [key for key in budgets]))
+        categories = list(dict.fromkeys([x["income_source"] for x in incomes] + [x["expense_category"] for x in expenses] + [key for key in budgets])) # From budgets, incomes, and expenses gets every possible category added
         categories.sort()
         budgets = {x:budgets.get(x) for x in categories}
 
@@ -105,7 +104,7 @@ def budget(incomes,expenses):
 
                 if category:
                     if isinstance(category, list):
-                        budgets[category[0]] = None
+                        budgets[category[0]] = None # If budgets is a list than make it a none value
                         continue
 
                     if not category in categories: categories.append(category)
@@ -119,7 +118,7 @@ def budget(incomes,expenses):
                     ).execute()
 
                     # Category = "House" or "Rent" for example, amount = 1000, hasn't saved both of those values to savable data or even budget variable yet
-                    budgets[category] = amount
+                    budgets[category] = amount # Sets budget to amount, adds budget if needed
                 else:
                     break
 
@@ -134,9 +133,5 @@ def budget(incomes,expenses):
 
 
         else:
-            print("\033cThank you for using my program!")
-            wb("budgets.csv",budgets)
+            wb("budgets.csv",budgets) # writes to budget after exits returns to main
             return
-
-#[{"income":14,"income_date":"03-02-25 00:00:00","income_source":"Food"},{"income":14,"income_date":"04-02-25 00:00:00","income_source":"Food"},{"income":26,"income_date":"04-02-25 00:00:00","income_source":"Car"},{"income":36,"income_date":"04-07-25 00:00:00","income_source":"Car"},{"income":42,"income_date":"04-01-25 00:00:00","income_source":"House"}]
-# TEST VALUE I WILL DELETE LATER value1 = [{"expense":14,"expense_date":"03-02-25 00:00:00","expense_category":"Food"},{"expense":14,"expense_date":"04-02-25 00:00:00","expense_category":"Food"},{"expense":26,"expense_date":"04-02-25 00:00:00","expense_category":"Car"},{"expense":36,"expense_date":"04-07-25 00:00:00","expense_category":"Car"},{"expense":42,"expense_date":"04-01-25 00:00:00","expense_category":"House"}]
