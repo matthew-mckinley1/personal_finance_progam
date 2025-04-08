@@ -11,7 +11,7 @@ Does not need to be done.
 ## Excecution and Usage
 ---
 This program is password protected, so it is opened by with a prompt asking for username and password. This is a python program that needs python to run. If you installed it correctly this is what it should look like when you run main:
-![image](relative link to your image NOTE: this means the image must be saved in your repository.)  
+![image](https://github.com/Maximusholdaway11/personal_finance_progam/blob/main/image.png)  
 
 ## Used Technologies
 ---
