@@ -110,16 +110,16 @@ def show_income_expense_entry(income_entry_list, expense_entry_list):
                 if user_input == 'Give a date to use':
                     user_entry_date = get_entry_date()
                     #Finding the income entry and if found showing the income entry
+                    found = False
                     for income_entry in income_entry_list:
                         if parser.parse(income_entry['income_date']) == user_entry_date:
                             print("The entry has been found showing entry.")
                             print(f'This is the income amount: {income_entry['income']}')
                             print(f'This is the income date: {income_entry['income_date']}')
                             print(f'This is the source of the income: {income_entry['income_source']}')
-                            break
-                    else:
+                            found = True
+                    if not found:
                         print("Unable to find any entries with that date please try again.")
-                        continue
                 elif user_input == 'Exit':
                     break
         elif user_input == 'Expense':
@@ -128,16 +128,16 @@ def show_income_expense_entry(income_entry_list, expense_entry_list):
                 if user_input == 'Give a date to use':
                     user_entry_date = get_entry_date()
                     #Finding the expense entry and if found showing the expense entry
+                    found = False
                     for expense_entry in expense_entry_list:
                         if parser.parse(expense_entry['expense_date']) == user_entry_date:
                             print("The entry has been found showing entry.")
                             print(f'This is the expense amount: {expense_entry['expense']}')
                             print(f'This is the expense date: {expense_entry['expense_date']}')
                             print(f'This is the category of the expense: {expense_entry['expense_category']}')
-                            break
-                    else:
+                            found = True
+                    if not found:
                         print("Unable to find any entries with that date please try again.")
-                        continue
                 elif user_input == 'Exit':
                     break
         elif user_input == 'Exit':

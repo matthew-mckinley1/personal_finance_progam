@@ -20,9 +20,11 @@ This program is password protected, so it is opened by with a prompt asking for 
 - MatPlotLib, used to display graphs in the project
 `pip install matplotlib`
 - Pandas, used to handle csv files in the project
-`pip install pandas` 
-- Crypto, used to encrypt user's password
-`pip install pycryptodome`  
+`pip install pandas`  
+- Numpy, used to handle certain numerical interactions.
+`pip install numpy`
+- PyCryptoDome, used to encrypt passwords in the program. (Also sometimes refered to as Crypto)
+`pip install PyCryptoDome`
 
 ## Current Features
 ---
@@ -34,13 +36,15 @@ This program is password protected, so it is opened by with a prompt asking for 
 
 ## Contributing
 ---
-* Aria AI was used as an assistant for Gabe to program the budget graphs.
+
 ## Contributers
 ---
 * Darius Vaiaoga wrote the code for the login system and CSV saving and loading and wrote the README file
 * Nicholas Larsen wrote the code for the UI and encryption
 * Gabriel Crozier wrote the code for budgets and savings goals
 * Max Holdaway wrote the code for the income and expenses file
+* Timothy Larsen, assisted Nicholas in a multitude of areas, mostly encryption.
+* Aria AI was used as an assistant for Gabe to program the budget graphs.  
 
 ## Author's Info
 --- 
@@ -49,12 +53,11 @@ I am Darius Vaiaoga, a student of Ms. LaRose's Computer Programming 2 class. I h
 You can contact me at my school email: darius.vaiaoga@ucas-edu.net
 * "Insert name here" Info:  
 
-* "Insert name here" Info:  
-
 * Max Holdaway Info:  
 I am a simple Computer Programming 2 Student (CS1500). I am still learning how to code but I am improving. I hope to improve even more and eventually use this in engineering.  
 My School email is: max.holdaway@ucas-edu.net
-
+* Nicholas Larsen Info:  
+I am Nicholas Larsen, and I'm not really good at programming, but I've enjoyed simple games like scratch to learn how to program at an early age. I still have very little experience, but I enjoy programming and want to get better.
 ## Change Log
 ---
 

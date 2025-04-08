@@ -43,7 +43,7 @@ def budget_graph(data):
                 ax.bar(bar_positions[category_data.index.get_loc(j)], abs(month_data['Difference']), bar_width, bottom=month_data['Value'], color='#E2E2E2')
             elif month_data['Difference'] > 0:
                 ax.bar(bar_positions[category_data.index.get_loc(j)], month_data['Difference'], bar_width, bottom=month_data['Budget'], color=very_darkened_cmap(i))
-            ax.hlines(month_data['Budget'], xmin=bar_positions[category_data.index.get_loc(j)] - bar_width / 2 - 0.01, xmax=bar_positions[category_data.index.get_loc(j)] + bar_width / 2 + 0.01, color='black', linewidth=3.5)
+            if month_data["Budget"] > 0: ax.hlines(month_data['Budget'], xmin=bar_positions[category_data.index.get_loc(j)] - bar_width / 2 - 0.01, xmax=bar_positions[category_data.index.get_loc(j)] + bar_width / 2 + 0.01, color='black', linewidth=3.5)
 
     ax.set_xticks(x)
     ax.set_xticklabels(months)

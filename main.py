@@ -6,7 +6,8 @@ from income_expenses import *
 from graphs import *
 from currencies import *
 from save_load import read_finances
-from budget import *
+from budget import budget
+from savings import savings
 #Asks a question using InquirerPy
 def question(answers,display):
     choice = inquirer.select(
@@ -37,7 +38,7 @@ def main():
         elif choice == choices[1]:
             budget(read_finances()[0], read_finances()[1])
         elif choice == choices[2]:
-            pass
+            savings(read_finances()[0], read_finances()[1])
         elif choice == choices[3]:
             graph_ui(read_finances()[0], read_finances()[1])
         else:
