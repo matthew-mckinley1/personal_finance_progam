@@ -1,8 +1,8 @@
 # Gabriel Crozier Budget Calculator
 from InquirerPy import inquirer
-from graph_budget import budget_graph
-from write_budgets import write_budget as wb
-from read_budgets import read_budget as rb
+from budget_graph import budget_graph
+from budgets_write import write_budget as wb
+from budgets_read import read_budget as rb
 
 
 months_abr = ("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
