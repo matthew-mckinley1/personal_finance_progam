@@ -1,4 +1,4 @@
-# Project Name
+# Personal Finance Project
 
 ## Project Description
 ---
