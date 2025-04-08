@@ -2,7 +2,7 @@
 
 ## Project Description
 ---
-This is a personal finance program. It is used to store financial information, budgets, and savings goals protected by encryption.
+This is a personal finance program. It is used to store financial information, budgets, and savings goals protected by encryption. It saves financial information inbetween runs. It also provides visualizations for your budget and savings goals.
 
 ## Installation
 ---
@@ -10,11 +10,8 @@ Does not need to be done.
 
 ## Excecution and Usage
 ---
-- item one
-- item two
-- item three  
-
-![image](realtive link to your image NOTE: this means the image must be saved in your repository.)  
+This program is password protected, so it is opened by with a prompt asking for username and password. This is a python program that needs python to run. If you installed it correctly this is what it should look like when you run main:
+![image](relative link to your image NOTE: this means the image must be saved in your repository.)  
 
 ## Used Technologies
 ---
