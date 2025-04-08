@@ -55,7 +55,7 @@ You can contact me at my school email: darius.vaiaoga@ucas-edu.net
 * Max Holdaway Info:  
 I am a simple Computer Programming 2 Student (CS1500). I am still learning how to code but I am improving. I hope to improve even more and eventually use this in engineering.  
 My School email is: max.holdaway@ucas-edu.net
-* Nicholas Larsen Info:
+* Nicholas Larsen Info:  
 I am Nicholas Larsen, and I'm not really good at programming, but I've enjoyed simple games like scratch to learn how to program at an early age. I still have very little experience, but I enjoy programming and want to get better.
 ## Change Log
 ---
