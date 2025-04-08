@@ -4,6 +4,8 @@ import csv
 def convert_num(num):
     if num:
         num = float(num)
+    else:
+        num = 0
     return num
 
 def read_budget(location):

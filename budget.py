@@ -14,15 +14,19 @@ def data_converter(expenses_unform, month_year, categories, budgets):
 
     # Goes through each expense and selects based on the correct month
     for expense in expenses_unform:
-        if expense["expense_date"].split(" ")[0].split("-")[2][0:2] == year:
-            if expense["expense_date"].split(" ")[0].split("-")[0] == month:
+        if expense["expense_date"].split(" ")[0].split("-")[0][2:4] == year:
+            if expense["expense_date"].split(" ")[0].split("-")[1] == month:
                 expenses.append(expense)
+
+    print(expenses)
 
     month_label = [months_abr[int(month)]] * len(categories) # Ex: May, May, May, May -- Alows for easy dataframe
     categories = sum([[cat] for cat in categories],[]) # Used to work for multiple months, for now it's just over engineered
-    values = [sum([ex["expense"] for ex in expenses if ex["expense_category"] == cat]) for cat in categories] # Goes through each category and adds the sum of all expenses for that category into a list
+    values = [sum([float(ex["expense"]) for ex in expenses if ex["expense_category"] == cat]) for cat in categories] # Goes through each category and adds the sum of all expenses for that category into a list
     budgets_data = sum([[budgets[key]] for key in budgets],[]) # Used to work for multiple months, now it just over engeneered
     
+    
+
     data = {
         'Month': month_label,
         'Category': categories,
@@ -111,7 +115,7 @@ def budget(incomes,expenses):
                         keybindings={"negative_toggle": []},
                         min_allowed=0,
                         transformer=lambda result:f"${int(result):,}",
-                        filter=lambda result: int(result)
+                        filter=lambda result: float(result)
                     ).execute()
 
                     # Category = "House" or "Rent" for example, amount = 1000, hasn't saved both of those values to savable data or even budget variable yet
@@ -126,7 +130,6 @@ def budget(incomes,expenses):
                 invalid_message="Not Correct Format"
             ).execute()
             data = data_converter(expenses, month, categories, budgets)
-            print(data)
             budget_graph(data) # I REALLY WISH I COULD DO MULTIPLE MONTHS BUT THIS WAS ALREADY A NIGHTMARE!!!! # Graphs budgets on month
 
 
