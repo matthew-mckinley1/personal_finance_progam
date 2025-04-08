@@ -37,7 +37,7 @@ This program is password protected, so it is opened by with a prompt asking for 
 * Aria AI was used as an assistant for Gabe to program the budget graphs.
 ## Contributers
 ---
-* Darius Vaiaoga wrote the code for the login system and CSV saving and loading
+* Darius Vaiaoga wrote the code for the login system and CSV saving and loading and wrote the README file
 * Nicholas Larsen wrote the code for the UI and encryption
 * Gabriel Crozier wrote the code for budgets and savings goals
 * Max Holdaway wrote the code for the income and expenses file
